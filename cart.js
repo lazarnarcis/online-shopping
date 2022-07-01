@@ -20,10 +20,19 @@ if (cartElements.length) {
     });
     products.appendChild(button);
 
-    let link = document.createElement("a");
-    link.href = "index.html";
-    link.innerText = "Go back to main page!";
-    products.appendChild(link);
+    let emptyCart = document.createElement("button");
+    emptyCart.innerText = "Empty Cart";
+    emptyCart.addEventListener("click", function() {
+        cartElements = [];
+        localStorage.setItem("cartElements", JSON.stringify(cartElements));
+        window.location.href = "cart.html";
+    });
+    products.appendChild(emptyCart);
 } else {
     products.innerText = "No products in your cart!";
 }
+
+let link = document.createElement("a");
+link.href = "index.html";
+link.innerText = "Go back to main page!";
+products.appendChild(link);
