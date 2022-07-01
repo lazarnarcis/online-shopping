@@ -1,5 +1,4 @@
 let products = document.querySelector("#productsOfProducts");
-let cartElements = localStorage.getItem("cartElements") || 0;
 let cartBtn = document.querySelector("#cartBtn");
 let productsArray = [
     {
@@ -15,7 +14,8 @@ let productsArray = [
         name: "Japanese Abacus"
     }
 ];
-let cartEls = localStorage.getItem("cartEls") || [];
+let cartElements = localStorage.getItem("cartElements") || [];
+if (cartElements != 0) cartElements = JSON.parse(cartElements);
 
 for (let i = 0; i < productsArray.length; i++) {
     let product = document.createElement("div");
@@ -26,12 +26,10 @@ for (let i = 0; i < productsArray.length; i++) {
     let addToCart = document.createElement("button");
     addToCart.innerText = "Add to Cart";
     addToCart.addEventListener("click", function() {
-        cartElements++;
-        cartEls = [...cartEls, productsArray[i]];
-        console.log(cartEls);
-        cartBtn.innerHTML = "Cart (" + cartElements + ")";
-        localStorage.setItem("cartElements", cartElements);
-        localStorage.setItem("cartEls", cartEls);
+        cartElements = [...cartElements, productsArray[i]];
+        console.log(cartElements);
+        cartBtn.innerHTML = "Cart (" + Number(cartElements.length) + ")";
+        localStorage.setItem("cartElements", JSON.stringify(cartElements));
     });
     product.appendChild(productName);
     product.appendChild(productPrice);
@@ -39,4 +37,4 @@ for (let i = 0; i < productsArray.length; i++) {
     products.appendChild(product);
 }
 
-cartBtn.innerHTML = "Cart (" + cartElements + ")";
+cartBtn.innerHTML = "Cart (" + Number(cartElements.length) + ")";
