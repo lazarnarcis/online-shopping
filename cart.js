@@ -15,6 +15,9 @@ if (cartElements.length) {
     }
     let button = document.createElement("button");
     button.innerText = "Buy!";
+    button.addEventListener("click", () => {
+        alert("This function is not yet available!");
+    });
     products.appendChild(button);
 
     let link = document.createElement("a");
