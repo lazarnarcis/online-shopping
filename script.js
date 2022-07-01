@@ -28,7 +28,7 @@ for (let i = 0; i < productsArray.length; i++) {
     addToCart.addEventListener("click", function() {
         cartElements = [...cartElements, productsArray[i]];
         console.log(cartElements);
-        cartBtn.innerHTML = "Cart (" + Number(cartElements.length) + ")";
+        cartBtn.innerHTML = "Go to Cart (" + Number(cartElements.length) + ")";
         localStorage.setItem("cartElements", JSON.stringify(cartElements));
     });
     product.appendChild(productName);
@@ -37,4 +37,4 @@ for (let i = 0; i < productsArray.length; i++) {
     products.appendChild(product);
 }
 
-cartBtn.innerHTML = "Cart (" + Number(cartElements.length) + ")";
+cartBtn.innerHTML = "Go to Cart (" + Number(cartElements.length) + ")";
