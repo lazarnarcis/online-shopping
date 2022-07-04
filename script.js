@@ -26,8 +26,11 @@ for (let i = 0; i < productsArray.length; i++) {
     let addToCart = document.createElement("button");
     addToCart.innerText = "Add to Cart";
     addToCart.addEventListener("click", function() {
+        if (cartElements.length >= 10) {
+            alert("You can add maximum 10 products in your cart!");
+            return;
+        }
         cartElements = [...cartElements, productsArray[i]];
-        console.log(cartElements);
         cartBtn.innerHTML = "Go to Cart (" + Number(cartElements.length) + ")";
         localStorage.setItem("cartElements", JSON.stringify(cartElements));
     });
